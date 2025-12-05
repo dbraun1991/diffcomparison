@@ -117,10 +117,66 @@ nav a:hover {
     font-size: 1.1rem;
 }
 
-/* Hero Section */
+/* Hero Section - Personal Introduction */
 .hero {
     text-align: center;
     padding: 6rem 0;
+}
+
+.personal-intro .intro-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-image-wrapper {
+    flex-shrink: 0;
+}
+
+.profile-rim {
+    width: 180px;
+    height: 180px;
+    background-color: var(--horizontal-divider);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    box-shadow: 0 0 20px rgba(155, 174, 238, 0.3);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.intro-text {
+    text-align: left;
+}
+
+.intro-text h1 {
+    font-size: 3rem;
+    color: var(--h1-white);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.intro-text .subtitle {
+    font-size: 1.4rem;
+    color: var(--button-orange);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.intro-text .location {
+    font-size: 1.2rem;
+    color: var(--h2-light);
+    margin: 0;
 }
 
 .hero h1 {
@@ -137,6 +193,211 @@ nav a:hover {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Overview Section with Table */
+.overview {
+    padding: 4rem 0;
+}
+
+.overview h2 {
+    font-size: 2.5rem;
+    color: var(--h2-light);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.qualification-subtitle {
+    font-size: 2rem;
+    color: var(--button-orange);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.qualification-subtitle:first-of-type {
+    margin-top: 0;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+}
+
+.requirements-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(30, 50, 120, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.requirements-table thead {
+    background-color: var(--horizontal-divider);
+}
+
+.requirements-table th {
+    color: var(--h1-white);
+    padding: 1.5rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--vertical-divider);
+}
+
+.requirements-table td {
+    padding: 1.25rem 1rem;
+    color: var(--h2-light);
+    border-bottom: 1px solid rgba(155, 174, 238, 0.1);
+}
+
+.requirements-table tbody tr {
+    transition: background-color 0.3s;
+}
+
+.requirements-table tbody tr:hover {
+    background-color: rgba(30, 50, 120, 0.4);
+}
+
+.requirements-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.requirements-table td.fulfilled,
+.requirements-table td.ok,
+.requirements-table td.warning,
+.requirements-table td.pending {
+    text-align: center;
+    font-size: 1.5rem;
+    width: 100px;
+}
+
+.requirements-table td.ok {
+    color: var(--button-orange);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.requirements-table td.warning {
+    color: #FFA500;
+}
+
+.requirements-table td a {
+    color: var(--button-orange);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.requirements-table td a:hover {
+    color: #ff6a10;
+    text-decoration: underline;
+}
+
+/* Chapter Sections */
+.chapter {
+    padding: 4rem 0;
+}
+
+.chapter-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.chapter-header h2 {
+    font-size: 2.5rem;
+    color: var(--h2-light);
+    margin: 0;
+}
+
+.chapter-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.chapter-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--h2-light);
+    margin-bottom: 1.5rem;
+}
+
+.chapter-content h3 {
+    font-size: 1.8rem;
+    color: var(--h1-white);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.chapter-content ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.chapter-content ul li {
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 0.75rem;
+    color: var(--h2-light);
+}
+
+.chapter-content ul li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--button-orange);
+    font-weight: bold;
+}
+
+/* Education Entry Styling */
+.education-entry {
+    background-color: rgba(30, 50, 120, 0.2);
+    border-left: 4px solid var(--button-orange);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.education-entry:hover {
+    background-color: rgba(30, 50, 120, 0.3);
+    border-left-color: var(--vertical-divider);
+}
+
+.education-entry h3 {
+    font-size: 1.2rem;
+    color: var(--button-orange);
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.education-entry h4 {
+    font-size: 1.5rem;
+    color: var(--h1-white);
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.education-entry .institution {
+    font-size: 1.1rem;
+    color: var(--vertical-divider);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.education-entry p {
+    margin-bottom: 0.5rem;
+}
+
+.education-entry .highlight-info {
+    color: var(--h2-light);
+    background-color: rgba(155, 174, 238, 0.1);
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-top: 1rem;
 }
 
 /* Horizontal Divider */
@@ -405,8 +666,48 @@ nav a:hover {
         text-align: center;
     }
 
+    .personal-intro .intro-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .intro-text {
+        text-align: center !important;
+    }
+
+    .intro-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .profile-rim {
+        width: 150px;
+        height: 150px;
+    }
+
     .hero h1 {
         font-size: 2.5rem;
+    }
+
+    .qualification-subtitle {
+        font-size: 1.6rem;
+    }
+
+    .requirements-table {
+        font-size: 0.9rem;
+    }
+
+    .requirements-table th,
+    .requirements-table td {
+        padding: 1rem 0.5rem;
+    }
+
+    .chapter-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .chapter-header h2 {
+        font-size: 2rem;
     }
 
     .two-column {
