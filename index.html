@@ -3,347 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Wiki - Documentation</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Access Required</title>
+    <style>
+        :root {
+            --bg-blue: #0B132E;
+            --button-orange: #FF5A00;
+            --h1-white: #FFFFFF;
+            --h2-light: #B7BECD;
+            --horizontal-divider: #1E3278;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-blue);
+            color: var(--h2-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .password-container {
+            background-color: rgba(30, 50, 120, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--horizontal-divider);
+            border-radius: 12px;
+            padding: 3rem;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--h1-white);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo .highlight {
+            color: var(--button-orange);
+        }
+
+        .password-container h2 {
+            color: var(--h1-white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .password-container p {
+            color: var(--h2-light);
+            margin-bottom: 2rem;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(11, 19, 46, 0.8);
+            border: 2px solid var(--horizontal-divider);
+            border-radius: 8px;
+            color: var(--h1-white);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--button-orange);
+            box-shadow: 0 0 0 3px rgba(255, 90, 0, 0.1);
+        }
+
+        .submit-button {
+            width: 100%;
+            background-color: var(--button-orange);
+            color: var(--h1-white);
+            border: none;
+            padding: 1rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .submit-button:hover {
+            background-color: #ff6a10;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 90, 0, 0.4);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: #ff4444;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .error-message.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .password-container {
+                padding: 2rem;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Navigation -->
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">Dom<span class="highlight">Docs</span></div>
-            <nav>
-                <a href="#overview">Overview</a>
-                <a href="#chapter-msc">Education</a>
-                <a href="#chapter-architect">Experience</a>
-                <a href="#chapter-architecture">Architecture</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <a href="#overview"><button class="cta-button">Get Started</button></a>
-        </div>
-    </header>
-
-    <!-- Personal Introduction -->
-    <section class="hero personal-intro">
-        <div class="container">
-            <div class="intro-content">
-                <div class="profile-image-wrapper">
-                    <div class="profile-rim">
-                        <img src="resources/profile.jpg" alt="Dominik Braun" class="profile-image">
-                    </div>
-                </div>
-                <div class="intro-text">
-                    <h1>Dominik Braun</h1>
-                    <p class="subtitle">Java Developer and IT-Architect</p>
-                    <p class="location">Duisburg</p>
-                </div>
+    <div class="password-container">
+        <div class="logo">Dom<span class="highlight">Docs</span></div>
+        <h2>Access Required</h2>
+        <p>To ensure privacy for the following content, please enter the password.</p>
+        
+        <form id="passwordForm">
+            <div class="input-group">
+                <input 
+                    type="password" 
+                    id="passwordInput" 
+                    placeholder="Enter password"
+                    autocomplete="off"
+                    required
+                >
             </div>
-        </div>
-    </section>
+            <button type="submit" class="submit-button">Enter</button>
+        </form>
+        
+        <div id="errorMessage" class="error-message">Incorrect password. Please try again.</div>
+    </div>
 
-    <!-- Horizontal Divider -->
-    <div class="horizontal-divider"></div>
-
-    <!-- Overview Table Section -->
-    <section class="overview" id="overview">
-        <div class="container">
-            <h2>Qualifications Overview</h2>
-            
-            <!-- IT Architect Section -->
-            <h3 class="qualification-subtitle">IT Architect</h3>
-            <div class="table-wrapper">
-                <table class="requirements-table">
-                    <thead>
-                        <tr>
-                            <th>Requested</th>
-                            <th>Fulfilled</th>
-                            <th>Chapter</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>A completed degree in a STEM discipline</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-msc">M.Sc. Information Systems</a></td>
-                        </tr>
-                        <tr>
-                            <td>Experience in delivering IT projects and in creating and documenting enterprise and software architectures</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-architect">IT-Architect</a></td>
-                        </tr>
-                        <tr>
-                            <td>Solid expertise in enterprise/software architecture mgmt.</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-architecture">Management</a></td>
-                        </tr>
-                        <tr>
-                            <td>Experience with BPMN, low-code platforms, and architecture frameworks (e.g., TOGAF)</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-bpmn">BPMN 2.0</a></td>
-                        </tr>
-                        <tr>
-                            <td>Strong analytical skills; modelling experience (UML, Archimate, BPMN)</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-mermaid">Mermaid</a></td>
-                        </tr>
-                        <tr>
-                            <td>Ability to explain complex technical topics simply, in both German and English</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-c4">C4-Model</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- IT-Security Architect Section -->
-            <h3 class="qualification-subtitle">IT-Security Architect</h3>
-            <div class="table-wrapper">
-                <table class="requirements-table">
-                    <thead>
-                        <tr>
-                            <th>Requested</th>
-                            <th>Fulfilled</th>
-                            <th>Chapter</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Familiarity with modern encryption technologies</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-encryption">Encryption</a></td>
-                        </tr>
-                        <tr>
-                            <td>Experience with Splunk; understanding of current attack techniques</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-metrics">Metrics</a></td>
-                        </tr>
-                        <tr>
-                            <td>Ethical hacking</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-tryhackme">TryHackMe</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Senior DevOps Engineer Section -->
-            <h3 class="qualification-subtitle">Senior DevOps Engineer</h3>
-            <div class="table-wrapper">
-                <table class="requirements-table">
-                    <thead>
-                        <tr>
-                            <th>Requested</th>
-                            <th>Fulfilled</th>
-                            <th>Chapter</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Professional experience in DevOps, Site Reliability Engineering, or similar roles</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-devops">DevOps</a></td>
-                        </tr>
-                        <tr>
-                            <td>Proficiency in at least one scripting language (PowerShell, Bash, Python)</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-python">Python</a></td>
-                        </tr>
-                        <tr>
-                            <td>Hands-on experience with containerization (Docker) and orchestration (Kubernetes)</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-containers">Containers & K8s</a></td>
-                        </tr>
-                        <tr>
-                            <td>Confident use of version control systems (e.g., Git) and practical experience with CI/CD platforms</td>
-                            <td class="fulfilled">✅</td>
-                            <td><a href="#chapter-gitlab">GitLab</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- Horizontal Divider -->
-    <div class="horizontal-divider"></div>
-
-    <!-- Chapter: M.Sc. Information Systems -->
-    <section class="chapter" id="chapter-msc">
-        <div class="container">
-            <div class="chapter-header">
-                <div class="icon-background">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 14L21 9L12 4L3 9L12 14Z" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 14V22" stroke="currentColor" stroke-width="2"/>
-                        <path d="M7 11.5V16.5C7 17.5 9 19 12 19C15 19 17 17.5 17 16.5V11.5" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <h2>M.Sc. Information Systems</h2>
-            </div>
-            <div class="chapter-content">
-                <div class="education-entry">
-                    <h3>10/2018 – 09/2021</h3>
-                    <h4>Master's Degree (M.Sc.) - Information Systems</h4>
-                    <p class="institution">University of Duisburg-Essen</p>
-                    <p><strong>Degree:</strong> Master of Science - Information Systems (M.Sc.)</p>
-                    <p class="highlight-info"><strong>Study Abroad Semester:</strong> 01/2020 – 05/2020 at University of Jyväskylä, Finland</p>
-                </div>
-
-                <div class="education-entry">
-                    <h3>10/2014 – 03/2018</h3>
-                    <h4>Bachelor's Degree (B.Sc.) - Information Systems</h4>
-                    <p class="institution">University of Cologne</p>
-                    <p><strong>Degree:</strong> Bachelor of Science - Information Systems (B.Sc.)</p>
-                    <p class="highlight-info"><strong>Study Abroad Semester:</strong> 09/2016 – 12/2016 at Korea University in Seoul, South Korea</p>
-                </div>
-
-                <div class="education-entry">
-                    <h3>09/2011 – 08/2014</h3>
-                    <h4>Apprenticeship as an IT Specialist</h4>
-                    <p class="institution">WGZ BANK AG</p>
-                    <p><strong>Degree:</strong> IT Business Manager, Chamber of Commerce and Industry (IHK)</p>
-                    <p class="highlight-info"><strong>International Internship:</strong> 02/2014 at DZ PRIVATBANK S.A. in Luxembourg</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Horizontal Divider -->
-    <div class="horizontal-divider"></div>
-
-    <!-- Chapter: IT-Architect -->
-    <section class="chapter" id="chapter-architect">
-        <div class="container">
-            <div class="chapter-header">
-                <div class="icon-background">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
-                        <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
-                        <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
-                        <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <h2>IT-Architect</h2>
-            </div>
-            <div class="chapter-content">
-                <p>Sample text will be provided here. This section will cover recent experience as an IT Architect, including project deliveries, architecture documentation, and enterprise system design.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Horizontal Divider -->
-    <div class="horizontal-divider"></div>
-
-    <!-- Chapter: Architecture -->
-    <section class="chapter" id="chapter-architecture">
-        <div class="container">
-            <div class="chapter-header">
-                <div class="icon-background">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                        <path d="M3 21H21" stroke="currentColor" stroke-width="2"/>
-                        <path d="M5 21V7L12 3L19 7V21" stroke="currentColor" stroke-width="2"/>
-                        <path d="M9 21V12H15V21" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <h2>Architecture</h2>
-            </div>
-            <div class="chapter-content">
-                <p>Sample text will be provided here. This section will demonstrate expertise in enterprise and software architecture management, including frameworks, patterns, and best practices.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Horizontal Divider -->
-    <div class="horizontal-divider"></div>
-
-    <!-- Chapter: BPMN 2.0 -->
-    <section class="chapter" id="chapter-bpmn">
-        <div class="container">
-            <div class="chapter-header">
-                <div class="icon-background">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                        <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
-                        <circle cx="18" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
-                        <path d="M9 12H15" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 9V15" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <h2>BPMN 2.0</h2>
-            </div>
-            <div class="chapter-content">
-                <p>Sample text will be provided here. This section will showcase experience with BPMN, low-code platforms, and architecture frameworks such as TOGAF.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Horizontal Divider -->
-    <div class="horizontal-divider"></div>
-
-    <!-- Chapter: Mermaid -->
-    <section class="chapter" id="chapter-mermaid">
-        <div class="container">
-            <div class="chapter-header">
-                <div class="icon-background">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
-                        <path d="M8 8L12 12L16 8" stroke="currentColor" stroke-width="2"/>
-                        <path d="M8 12H16" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 12V16" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <h2>Mermaid</h2>
-            </div>
-            <div class="chapter-content">
-                <p>Sample text will be provided here. This section will demonstrate strong analytical and modeling skills using UML, ArchiMate, BPMN, and Mermaid diagrams.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Horizontal Divider -->
-    <div class="horizontal-divider"></div>
-
-    <!-- Chapter: C4-Model -->
-    <section class="chapter" id="chapter-c4">
-        <div class="container">
-            <div class="chapter-header">
-                <div class="icon-background">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 22V12" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 12L2 7" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 12L22 7" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <h2>C4-Model</h2>
-            </div>
-            <div class="chapter-content">
-                <p>Sample text will be provided here. This section will showcase the ability to explain complex technical topics in both German and English using the C4 model for architecture visualization.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Horizontal Divider -->
-    <div class="horizontal-divider"></div>
-
-    <!-- Call to Action -->
-    <section class="cta-section" id="contact">
-        <div class="container">
-            <h2>Let's Connect</h2>
-            <div class="cta-buttons">
-                <button class="cta-button large">Contact Me</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    <script src="password-auth.js"></script>
 </body>
 </html>

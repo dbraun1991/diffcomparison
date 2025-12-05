@@ -1,6 +1,10 @@
-# Professional Portfolio - GitHub Pages
+# Customized application page from Dominik Braun
 
-A clean, modern portfolio website showcasing IT Architecture qualifications and experience.
+Although a short source code analysis is recommended ..
+
+.. the [page can be accessed here](https://dbraun1991.github.io/diffcomparison/).
+
+In case of local `in browser` retrieval, check out the [local_how_to.md](./local_how_to.md)
 
 ## Features
 
