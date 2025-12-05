@@ -1,0 +1,734 @@
+/* Color Variables */
+:root {
+    --bg-blue: #0B132E;
+    --button-orange: #FF5A00;
+    --h1-white: #FFFFFF;
+    --h2-light: #B7BECD;
+    --vertical-divider: #9BAEEE;
+    --horizontal-divider: #1E3278;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-blue);
+    color: var(--h2-light);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Header */
+.main-header {
+    background-color: rgba(30, 50, 120, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--horizontal-divider);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--h1-white);
+}
+
+.logo .highlight {
+    color: var(--button-orange);
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--h2-light);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--button-orange);
+}
+
+/* Buttons */
+.cta-button {
+    background-color: var(--button-orange);
+    color: var(--h1-white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.cta-button:hover {
+    background-color: #ff6a10;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 90, 0, 0.4);
+}
+
+.cta-button.large {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.cta-button-outline {
+    background-color: transparent;
+    color: var(--button-orange);
+    border: 2px solid var(--button-orange);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.cta-button-outline:hover {
+    background-color: var(--button-orange);
+    color: var(--h1-white);
+    transform: translateY(-2px);
+}
+
+.cta-button-outline.large {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+/* Hero Section - Personal Introduction */
+.hero {
+    text-align: center;
+    padding: 6rem 0;
+}
+
+.personal-intro .intro-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-image-wrapper {
+    flex-shrink: 0;
+}
+
+.profile-rim {
+    width: 180px;
+    height: 180px;
+    background-color: var(--horizontal-divider);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    box-shadow: 0 0 20px rgba(155, 174, 238, 0.3);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.intro-text {
+    text-align: left;
+}
+
+.intro-text h1 {
+    font-size: 3rem;
+    color: var(--h1-white);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.intro-text .subtitle {
+    font-size: 1.4rem;
+    color: var(--button-orange);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.intro-text .location {
+    font-size: 1.2rem;
+    color: var(--h2-light);
+    margin: 0;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    color: var(--h1-white);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--h2-light);
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Overview Section with Table */
+.overview {
+    padding: 4rem 0;
+}
+
+.overview h2 {
+    font-size: 2.5rem;
+    color: var(--h2-light);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.qualification-subtitle {
+    font-size: 2rem;
+    color: var(--button-orange);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.qualification-subtitle:first-of-type {
+    margin-top: 0;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+}
+
+.requirements-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(30, 50, 120, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.requirements-table thead {
+    background-color: var(--horizontal-divider);
+}
+
+.requirements-table th {
+    color: var(--h1-white);
+    padding: 1.5rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--vertical-divider);
+}
+
+.requirements-table td {
+    padding: 1.25rem 1rem;
+    color: var(--h2-light);
+    border-bottom: 1px solid rgba(155, 174, 238, 0.1);
+}
+
+.requirements-table tbody tr {
+    transition: background-color 0.3s;
+}
+
+.requirements-table tbody tr:hover {
+    background-color: rgba(30, 50, 120, 0.4);
+}
+
+.requirements-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.requirements-table td.fulfilled,
+.requirements-table td.ok,
+.requirements-table td.warning,
+.requirements-table td.pending {
+    text-align: center;
+    font-size: 1.5rem;
+    width: 100px;
+}
+
+.requirements-table td.ok {
+    color: var(--button-orange);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.requirements-table td.warning {
+    color: #FFA500;
+}
+
+.requirements-table td a {
+    color: var(--button-orange);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.requirements-table td a:hover {
+    color: #ff6a10;
+    text-decoration: underline;
+}
+
+/* Chapter Sections */
+.chapter {
+    padding: 4rem 0;
+}
+
+.chapter-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.chapter-header h2 {
+    font-size: 2.5rem;
+    color: var(--h2-light);
+    margin: 0;
+}
+
+.chapter-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.chapter-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--h2-light);
+    margin-bottom: 1.5rem;
+}
+
+.chapter-content h3 {
+    font-size: 1.8rem;
+    color: var(--h1-white);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.chapter-content ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.chapter-content ul li {
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 0.75rem;
+    color: var(--h2-light);
+}
+
+.chapter-content ul li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--button-orange);
+    font-weight: bold;
+}
+
+/* Education Entry Styling */
+.education-entry {
+    background-color: rgba(30, 50, 120, 0.2);
+    border-left: 4px solid var(--button-orange);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.education-entry:hover {
+    background-color: rgba(30, 50, 120, 0.3);
+    border-left-color: var(--vertical-divider);
+}
+
+.education-entry h3 {
+    font-size: 1.2rem;
+    color: var(--button-orange);
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.education-entry h4 {
+    font-size: 1.5rem;
+    color: var(--h1-white);
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.education-entry .institution {
+    font-size: 1.1rem;
+    color: var(--vertical-divider);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.education-entry p {
+    margin-bottom: 0.5rem;
+}
+
+.education-entry .highlight-info {
+    color: var(--h2-light);
+    background-color: rgba(155, 174, 238, 0.1);
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+/* Horizontal Divider */
+.horizontal-divider {
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--horizontal-divider) 20%,
+        var(--horizontal-divider) 80%,
+        transparent
+    );
+    margin: 3rem 0;
+}
+
+/* Features Section */
+.features {
+    padding: 4rem 0;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    color: var(--h2-light);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: rgba(30, 50, 120, 0.2);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--horizontal-divider);
+    transition: all 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--vertical-divider);
+    box-shadow: 0 10px 30px rgba(155, 174, 238, 0.1);
+}
+
+/* Icon Background - Shows the icon background color */
+.icon-background {
+    width: 64px;
+    height: 64px;
+    background-color: var(--horizontal-divider);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--vertical-divider);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    color: var(--h1-white);
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--h2-light);
+    line-height: 1.7;
+}
+
+/* Documentation Section with Vertical Divider */
+.documentation {
+    padding: 4rem 0;
+}
+
+.documentation h2 {
+    font-size: 2.5rem;
+    color: var(--h2-light);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* Vertical Divider */
+.vertical-divider {
+    width: 2px;
+    background: linear-gradient(
+        180deg,
+        transparent,
+        var(--vertical-divider) 10%,
+        var(--vertical-divider) 90%,
+        transparent
+    );
+    height: 100%;
+    min-height: 400px;
+}
+
+.column h3 {
+    font-size: 1.5rem;
+    color: var(--h1-white);
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.column h3:first-child {
+    margin-top: 0;
+}
+
+.doc-list {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.doc-list li {
+    margin-bottom: 0.75rem;
+}
+
+.doc-list a {
+    color: var(--h2-light);
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.doc-list a:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--button-orange);
+    transition: transform 0.3s;
+}
+
+.doc-list a:hover {
+    color: var(--button-orange);
+    padding-left: 2rem;
+}
+
+.doc-list a:hover:before {
+    transform: translateX(5px);
+}
+
+/* Stats Section with Small Vertical Dividers */
+.stats {
+    padding: 4rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--button-orange);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--h2-light);
+}
+
+/* Small Vertical Dividers in Stats */
+.vertical-divider-small {
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(
+        180deg,
+        transparent,
+        var(--vertical-divider),
+        transparent
+    );
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    color: var(--h2-light);
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    color: var(--h2-light);
+    margin-bottom: 2.5rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+/* Footer */
+.main-footer {
+    background-color: rgba(11, 19, 46, 0.8);
+    padding: 3rem 0 1.5rem;
+    border-top: 1px solid var(--horizontal-divider);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+    color: var(--h1-white);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer-section a {
+    display: block;
+    color: var(--h2-light);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: var(--button-orange);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--horizontal-divider);
+    color: var(--h2-light);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .personal-intro .intro-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .intro-text {
+        text-align: center !important;
+    }
+
+    .intro-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .profile-rim {
+        width: 150px;
+        height: 150px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .qualification-subtitle {
+        font-size: 1.6rem;
+    }
+
+    .requirements-table {
+        font-size: 0.9rem;
+    }
+
+    .requirements-table th,
+    .requirements-table td {
+        padding: 1rem 0.5rem;
+    }
+
+    .chapter-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .chapter-header h2 {
+        font-size: 2rem;
+    }
+
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+
+    .vertical-divider {
+        display: none;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .vertical-divider-small {
+        display: none;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}

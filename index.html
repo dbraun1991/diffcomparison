@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Required</title>
+    <style>
+        :root {
+            --bg-blue: #0B132E;
+            --button-orange: #FF5A00;
+            --h1-white: #FFFFFF;
+            --h2-light: #B7BECD;
+            --horizontal-divider: #1E3278;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-blue);
+            color: var(--h2-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .password-container {
+            background-color: rgba(30, 50, 120, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--horizontal-divider);
+            border-radius: 12px;
+            padding: 3rem;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--h1-white);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo .highlight {
+            color: var(--button-orange);
+        }
+
+        .password-container h2 {
+            color: var(--h1-white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .password-container p {
+            color: var(--h2-light);
+            margin-bottom: 2rem;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(11, 19, 46, 0.8);
+            border: 2px solid var(--horizontal-divider);
+            border-radius: 8px;
+            color: var(--h1-white);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--button-orange);
+            box-shadow: 0 0 0 3px rgba(255, 90, 0, 0.1);
+        }
+
+        .submit-button {
+            width: 100%;
+            background-color: var(--button-orange);
+            color: var(--h1-white);
+            border: none;
+            padding: 1rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .submit-button:hover {
+            background-color: #ff6a10;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 90, 0, 0.4);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: #ff4444;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .error-message.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .password-container {
+                padding: 2rem;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="password-container">
+        <div class="logo">Dom<span class="highlight">Docs</span></div>
+        <h2>Access Required</h2>
+        <p>
+            Please enter the password <br>
+            or inspect the page as code via 
+            <a href="https://github.com/dbraun1991/diffcomparison" target="_blank" rel="noopener noreferrer">
+                github
+            </a>.
+        </p>
+        
+        <form id="passwordForm">
+            <div class="input-group">
+                <input 
+                    type="password" 
+                    id="passwordInput" 
+                    placeholder="Enter password"
+                    autocomplete="off"
+                    required
+                >
+            </div>
+            <button type="submit" class="submit-button">Enter</button>
+        </form>
+        
+        <div id="errorMessage" class="error-message">Incorrect password. Please try again.</div>
+    </div>
+
+    <script>
+        // UUID v4 Generator
+        function generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0;
+                const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        // Send tracking pixel
+        function sendTrackingPixel(session, action) {
+            const pixelUrl = `https://backendcontent.d-braun1991.workers.dev/pixel?session=${session}&action=${action}`;
+            const img = new Image(1, 1);
+            img.src = pixelUrl;
+            img.style.display = 'none';
+            document.body.appendChild(img);
+        }
+
+        // Password authentication (placeholder - replace with actual auth)
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('passwordInput').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Replace with your actual password check
+            // For demo purposes, accepting any password
+            const isValidPassword = true; // Replace with actual validation
+            
+            if (isValidPassword) {
+                // Generate and store session UUID
+                const sessionId = generateUUID();
+                sessionStorage.setItem('session_uuid', sessionId);
+                sessionStorage.setItem('authenticated', 'true');
+                
+                // Send login tracking pixel
+                sendTrackingPixel(sessionId, 'login');
+                
+                // Redirect to main page after short delay (allow pixel to fire)
+                setTimeout(() => {
+                    window.location.href = 'main.html';
+                }, 100);
+            } else {
+                errorMessage.classList.add('show');
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+    <script src="password-auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Wiki - Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Header Layout */
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* CV Styles */
+        .cv-section {
+            margin: 2rem 0;
+        }
+
+        .cv-entry {
+            margin: 2rem 0;
+            padding: 1.5rem 0;
+            border-left: 3px solid var(--horizontal-divider);
+            padding-left: 1.5rem;
+        }
+
+        .cv-period {
+            color: var(--button-orange);
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-entry h4 {
+            color: var(--h1-white);
+            margin: 0.5rem 0;
+        }
+
+        .cv-role {
+            color: var(--h2-light);
+            margin: 0.5rem 0;
+        }
+
+        .cv-description {
+            color: var(--h2-light);
+            margin: 0.75rem 0;
+            line-height: 1.6;
+        }
+
+        .cv-highlights {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .cv-highlights li {
+            color: var(--h2-light);
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        .institution {
+            color: var(--h2-light);
+            font-style: italic;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: rgba(30, 50, 120, 0.2);
+            border: 1px solid var(--horizontal-divider);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .project-card h3 {
+            color: var(--h1-white);
+            margin-bottom: 1rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-period {
+            color: var(--button-orange);
+            font-weight: bold;
+        }
+
+        .project-industry {
+            color: var(--h2-light);
+            font-style: italic;
+        }
+
+        .project-description {
+            color: var(--h2-light);
+            line-height: 1.8;
+            margin: 1rem 0;
+        }
+
+        .project-card h4 {
+            color: var(--h1-white);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card ul {
+            margin: 0.5rem 0 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .project-card li {
+            color: var(--h2-light);
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--horizontal-divider);
+        }
+
+        .project-tech strong {
+            color: var(--h1-white);
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: var(--horizontal-divider);
+            color: var(--h1-white);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            margin: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        /* Certifications Grid */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .cert-card {
+            background: rgba(30, 50, 120, 0.2);
+            border: 1px solid var(--horizontal-divider);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            border-color: var(--button-orange);
+            transform: translateY(-5px);
+        }
+
+        .cert-card h4 {
+            color: var(--h1-white);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .cert-issuer {
+            color: var(--button-orange);
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .cert-date {
+            color: var(--h2-light);
+            margin: 0.5rem 0;
+        }
+
+        .cert-id {
+            color: var(--h2-light);
+            font-size: 0.85rem;
+            margin: 0.5rem 0;
+            font-family: monospace;
+        }
+
+        .conf-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .conf-list li {
+            color: var(--h2-light);
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--horizontal-divider);
+            line-height: 1.6;
+        }
+
+        .conf-list li:last-child {
+            border-bottom: none;
+        }
+
+        .conf-list strong {
+            color: var(--h1-white);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            margin: 2.5rem 0;
+        }
+
+        .skills-section h3 {
+            color: var(--h1-white);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: var(--button-orange);
+            color: var(--h1-white);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: #ff6a10;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Architecture Diagrams */
+        .architecture-diagram {
+            margin: 2rem 0;
+        }
+
+        .diagram-container {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .diagram-container img {
+            transition: transform 0.3s ease;
+        }
+
+        .diagram-container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 25px rgba(155, 174, 238, 0.3);
+        }
+
+        .diagram-legend {
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .diagram-container img {
+                padding: 0.5rem;
+            }
+            
+            .architecture-diagram h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Burger Menu Button */
+        .burger-menu {
+            background: var(--button-orange);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .burger-menu:hover {
+            background: #ff6a10;
+            transform: scale(1.05);
+        }
+
+        /* Contact Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-container {
+            background: var(--bg-blue);
+            border: 2px solid var(--horizontal-divider);
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            color: var(--h1-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            color: var(--button-orange);
+            transform: rotate(90deg);
+        }
+
+        .modal-content {
+            padding: 2rem;
+        }
+
+        .modal-content .input-group {
+            margin: 1rem 0;
+        }
+
+        .modal-content input:focus {
+            outline: none;
+            border-color: var(--button-orange);
+            box-shadow: 0 0 0 3px rgba(255, 90, 0, 0.1);
+        }
+
+        #errorMessage.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .modal-container {
+                width: 95%;
+                max-height: 85vh;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100vh;
+            background: var(--bg-blue);
+            border-left: 2px solid var(--horizontal-divider);
+            z-index: 1000;
+            transition: right 0.3s ease-in-out;
+            overflow-y: auto;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            color: var(--h1-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .sidebar-close:hover {
+            color: var(--button-orange);
+        }
+
+        .sidebar-nav {
+            padding: 4rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sidebar-link {
+            color: var(--h2-light);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-link:hover {
+            background: rgba(30, 50, 120, 0.3);
+            color: var(--h1-white);
+            border-left-color: var(--button-orange);
+            transform: translateX(5px);
+        }
+
+        /* Sidebar Overlay */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Font Awesome check styling */
+        .fulfilled .fa-check-circle {
+            color: #4CAF50;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 300px;
+                right: -300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 280px;
+                right: -280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">Dom<span class="highlight">Docs</span></div>
+            <button class="burger-menu" id="burgerMenu" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="sidebar-nav">
+            <a href="#overview" class="sidebar-link">Overview</a>
+            <a href="#motivation" class="sidebar-link">Motivation</a>
+            <a href="#cv" class="sidebar-link">Curriculum Vitae</a>
+            <a href="#projects" class="sidebar-link">Projects</a>
+            <a href="#certifications" class="sidebar-link">Certifications</a>
+            <a href="#skills" class="sidebar-link">Skills</a>
+            <a href="#architecture" class="sidebar-link">Page Architecture</a>
+            <a href="#contact" class="sidebar-link">Contact</a>
+        </nav>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Personal Introduction -->
+    <section class="hero personal-intro">
+        <div class="container">
+            <div class="intro-content">
+                <div class="profile-image-wrapper">
+                    <div class="profile-rim">
+                        <img src="resources/profile.jpg" alt="Dominik Braun" class="profile-image">
+                    </div>
+                </div>
+                <div class="intro-text">
+                    <h1 style="font-size: 2rem;">Dominik Braun</h1>
+                    <p class="subtitle">Java Developer and IT Architect</p>
+                    <p class="location">Duisburg</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; font-size: 1.1rem; color: #B7BECD;">
+                Application for the advertised position as an IT architect
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Divider -->
+    <div class="horizontal-divider"></div>
+
+    <!-- Overview Table Section -->
+    <section class="overview" id="overview">
+        <div class="container">
+            <h2>Qualifications Overview</h2>
+            
+            <!-- IT Architect Section -->
+            <h3 class="qualification-subtitle">IT Architect</h3>
+            <div class="table-wrapper">
+                <table class="requirements-table">
+                    <thead>
+                        <tr>
+                            <th>Requested</th>
+                            <th>Fulfilled</th>
+                            <th>Chapter</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A completed degree in a STEM discipline</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#cv">M.Sc. Information Systems</a></td>
+                        </tr>
+                        <tr>
+                            <td>Experience in delivering IT projects and in creating and documenting enterprise and software architectures</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#projects">IT Projects</a></td>
+                        </tr>
+                        <tr>
+                            <td>Solid expertise in enterprise/software architecture mgmt.</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#certifications">iSAQB CPSA-F</a></td>
+                        </tr>
+                        <tr>
+                            <td>Experience with BPMN, low-code platforms, and architecture frameworks (e.g., TOGAF)</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#skills">Architecture Frameworks</a></td>
+                        </tr>
+                        <tr>
+                            <td>Strong analytical skills; modelling experience (UML, Archimate, BPMN)</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#architecture">Modelling Skills</a></td>
+                        </tr>
+                        <tr>
+                            <td>Ability to explain complex technical topics simply, in both German and English</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#cv">Bilingual</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- IT-Security Architect Section -->
+            <h3 class="qualification-subtitle">IT-Security Architect</h3>
+            <div class="table-wrapper">
+                <table class="requirements-table">
+                    <thead>
+                        <tr>
+                            <th>Requested</th>
+                            <th>Fulfilled</th>
+                            <th>Chapter</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Familiarity with modern encryption technologies</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#projects">RSA Encryption</a></td>
+                        </tr>
+                        <tr>
+                            <td>Experience with Splunk; understanding of current attack techniques</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#certifications">TryHackMe</a></td>
+                        </tr>
+                        <tr>
+                            <td>Ethical hacking</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#certifications">Cyber Security 101</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Senior DevOps Engineer Section -->
+            <h3 class="qualification-subtitle">Senior DevOps Engineer</h3>
+            <div class="table-wrapper">
+                <table class="requirements-table">
+                    <thead>
+                        <tr>
+                            <th>Requested</th>
+                            <th>Fulfilled</th>
+                            <th>Chapter</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Professional experience in DevOps, Site Reliability Engineering, or similar roles</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#cv">2+ Years Experience</a></td>
+                        </tr>
+                        <tr>
+                            <td>Proficiency in at least one scripting language (PowerShell, Bash, Python)</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#skills">Python, Node.js</a></td>
+                        </tr>
+                        <tr>
+                            <td>Hands-on experience with containerization (Docker) and orchestration (Kubernetes)</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#projects">K8s & ArgoCD</a></td>
+                        </tr>
+                        <tr>
+                            <td>Confident use of version control systems (e.g., Git) and practical experience with CI/CD platforms</td>
+                            <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
+                            <td><a href="#skills">GitLab & Jenkins</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Divider -->
+    <div class="horizontal-divider"></div>
+
+    <!-- Motivational Statement -->
+    <section class="chapter" id="motivation">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="icon-background">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h2>Why softproject as IT Architect</h2>
+            </div>
+            <div class="chapter-content">
+                
+                <div style="background: rgba(30, 50, 120, 0.2); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--button-orange); margin-bottom: 2rem;">
+                    <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem;">
+                        The IT Architect position at softproject resonates deeply with my professional journey and aspirations. 
+                        Having evolved from backend development into a cross-functional architecture role, I've discovered my passion 
+                        lies in the intersection of technology strategy, system design, and organizational enablement—precisely what 
+                        this role offers for the X4 platform.
+                    </p>
+                </div>
+
+                <h3 style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Architecture as Organizational Catalyst</h3>
+                <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
+                    At schauinsland-reisen, I've experienced firsthand how architecture transcends pure technical design. My work on the 
+                    BPMN Process Creator demonstrates this philosophy: by providing departments with a tool for transparent process documentation, 
+                    I've enabled technology-driven organizational development. This aligns perfectly with softproject's need to shape 
+                    architectural concepts that consider not just scalability and resilience, but holistic collaboration across Engineering, 
+                    DevOps, Security, and Infrastructure teams.
+                </p>
+
+                <h3 style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Proven Track Record in Modern Architecture Patterns</h3>
+                <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
+                    Your focus on microservices, domain-driven design, and event-driven architectures mirrors my practical experience. 
+                    The MobileApp Push-Service project showcased my ability to work in a team on horizontally scalable systems using Kubernetes, 
+                    and message queues (NATS), and GitOps practices. The schauinsland-reisen company-wide SSO/Keycloak initiative required architecting 
+                    integrations across multiple systems while ensuring GDPR compliance—exactly the kind of enterprise-level thinking 
+                    needed for the X4 platform's evolution. To see how I document and communicate these architectural concepts, 
+                    view the <a href="#architecture" style="color: var(--button-orange); text-decoration: underline;">Page Architecture section</a> 
+                    with detailed system diagrams following C4 Model and UML standards.
+                </p>
+
+                <h3 style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Technical Debt & Modernization Expertise</h3>
+                <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
+                    My creation of the Readme Report tool—which improved documentation coverage from 10% to 80% across 310+ repositories—demonstrates 
+                    my ability to assess technical quality, identify systemic issues, and implement pragmatic modernization strategies. 
+                    This experience in reducing technical debt and improving maintainability directly applies to your requirement of 
+                    "assessing technical quality of existing systems and developing modernization strategies."
+                </p>
+
+                <h3 style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Documentation & Communication Philosophy</h3>
+                <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
+                    I firmly believe that "good code is understandable by humans—and thus by AI" leading into a 10x-preogress future.
+                    This principle has guided my work in establishing documentation standards, architecture decision records, and transparent decision-making processes. 
+                    My iSAQB CPSA-F certification and practical application of BPMN, UML, and enterprise architecture frameworks 
+                    ensure I can fulfill your need to "define technical standards and document decisions in a transparent and comprehensible way."
+                </p>
+
+                <h3 style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Platform Engineering & Cloud Native Mindset</h3>
+                <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
+                    My involvement in the Kubernetes rollout initiative, attendance at DevOpsCon (Internal Developer Platform track), and basic
+                    hands-on experience with ArgoCD, Helm charts, and profound knowledge with GitLab CI/CD pipelines demonstrate my readiness to "support the 
+                    introduction of new development and operational models." I understand that platform engineering isn't just about 
+                    infrastructure—it's about enabling teams to deliver value faster and more reliably.
+                </p>
+
+                <h3 style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Why This Matters to Me</h3>
+                <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
+                    At schauinsland-reisen, I've operated as what could be called a "silent leader"—driving change without formal authority 
+                    through technical excellence and cross-team collaboration. While this has been rewarding, I'm seeking an environment 
+                    where architecture is explicitly recognized and empowered as a strategic function. softproject's commitment to 
+                    architectural excellence for the X4 platform represents exactly this opportunity.
+                </p>
+
+                <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
+                    The prospect of "shaping the technical roadmap together with Product Management" and making "make-or-buy decisions" 
+                    particularly excites me. My experience has taught me that the best architecture emerges from close collaboration 
+                    between technical depth and business understanding—a balance I'm eager to strike in a dedicated IT Architect role.
+                </p>
+
+                <div style="background: linear-gradient(135deg, rgba(30, 50, 120, 0.3), rgba(255, 90, 0, 0.1)); padding: 2rem; border-radius: 12px; margin-top: 2rem; border: 1px solid var(--horizontal-divider);">
+                    <h4 style="color: var(--h1-white); margin-bottom: 1rem; text-align: center;">What I Bring to softproject</h4>
+                    <ul style="color: var(--h2-light); line-height: 1.8; list-style-type: none; padding: 0;">
+                        <li style="margin: 0.75rem 0; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-check-circle" style="color: var(--button-orange); position: absolute; left: 0; top: 0.2rem;"></i>
+                            <strong>Technical Foundation:</strong> M.Sc. Information Systems, iSAQB CPSA-F, proven microservices & cloud expertise
+                        </li>
+                        <li style="margin: 0.75rem 0; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-check-circle" style="color: var(--button-orange); position: absolute; left: 0; top: 0.2rem;"></i>
+                            <strong>Architecture Practices:</strong> BPMN, DDD, event-driven systems, enterprise architecture management
+                        </li>
+                        <li style="margin: 0.75rem 0; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-check-circle" style="color: var(--button-orange); position: absolute; left: 0; top: 0.2rem;"></i>
+                            <strong>Platform Thinking:</strong> Kubernetes, CI/CD, GitOps, Infrastructure as Code, developer experience focus
+                        </li>
+                        <li style="margin: 0.75rem 0; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-check-circle" style="color: var(--button-orange); position: absolute; left: 0; top: 0.2rem;"></i>
+                            <strong>Quality & Governance:</strong> Technical debt reduction, security practices, documentation culture
+                        </li>
+                        <li style="margin: 0.75rem 0; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-check-circle" style="color: var(--button-orange); position: absolute; left: 0; top: 0.2rem;"></i>
+                            <strong>Collaboration & Communication:</strong> Cross-team facilitation, bilingual (German/English), transparent decision-making
+                        </li>
+                        <li style="margin: 0.75rem 0; padding-left: 1.5rem; position: relative;">
+                            <i class="fas fa-check-circle" style="color: var(--button-orange); position: absolute; left: 0; top: 0.2rem;"></i>
+                            <strong>Organizational Impact:</strong> Technology-driven organizational development, process transparency, cultural change
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Divider -->
+    <div class="horizontal-divider"></div>
+
+    <!-- Curriculum Vitae -->
+    <section class="chapter" id="cv">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="icon-background">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <path d="M16 7H8M16 11H8M13 15H8M19 3H5C3.895 3 3 3.895 3 5V19C3 20.105 3.895 21 5 21H19C20.105 21 21 20.105 21 19V5C21 3.895 20.105 3 19 3Z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h2>Curriculum Vitae</h2>
+            </div>
+            <div class="chapter-content">
+                
+                <!-- Work Experience -->
+                <div class="cv-section">
+                    <h3 style="color: var(--button-orange); margin-bottom: 1.5rem;">Professional Experience</h3>
+                    
+                    <div class="cv-entry">
+                        <div class="cv-period">Since 11/2023</div>
+                        <h4>schauinsland-reisen gmbh, Duisburg</h4>
+                        <p class="cv-role"><strong>Software Architect & Java Developer</strong></p>
+                        <p class="cv-description">Software architecture, backend engineering, DevOps practices, enterprise process modelling, and technology-driven organizational development in a mid-sized travel company (~700 employees).</p>
+                        <ul class="cv-highlights">
+                            <li><strong>Business-Critical Backend Architecture:</strong> Responsible for MeinSchauinsland API (customer self-service backbone), company-wide SSO/Keycloak integration, NATS messaging infrastructure</li>
+                            <li><strong>Enterprise Process Modelling:</strong> Designed and built BPMN Process Creator (internal SPA), enabling company-wide process documentation and transparency across all departments</li>
+                            <li><strong>Documentation & Governance:</strong> Created Readme Report tool - automated documentation quality scanning across 310+ repositories, improving coverage from ~10% to ~80%</li>
+                            <li><strong>Security & DevOps:</strong> Container scanning with Trivy, PiTest mutation testing, ArchUnit architectural integrity, Testcontainers, GitLab pipeline standardization</li>
+                            <li><strong>Platform Engineering:</strong> Kubernetes kickoff initiative (2026 rollout), developer experience improvements, Internal Developer Platform strategy</li>
+                            <li><strong>Cross-Team Collaboration:</strong> Architecture bridge across Dev, Admin, BI, Security departments - unique role combining development, architecture, governance, and process excellence</li>
+                        </ul>
+                        <p class="highlight-info"><strong>Key Impact:</strong> Evolved from senior Java developer to cross-team architecture contributor with major influence on technology strategy, process transparency, and organizational maturity</p>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-period">03/2019 – 11/2023</div>
+                        <h4>Aleri Solutions GmbH, Köln</h4>
+                        <p class="cv-role"><strong>IT Specialist</strong> (Since 08/2021)</p>
+                        <p class="cv-description">Backend development for microservices, API management, GitOps with CI/CD pipelines, Kubernetes with ArgoCD.</p>
+                        <ul class="cv-highlights">
+                            <li>Java Spring Boot & Node.js microservices development</li>
+                            <li>RESTful API management and design</li>
+                            <li>Kubernetes orchestration with ArgoCD and Helm charts</li>
+                            <li>CI/CD pipelines via GitLab and Jenkins</li>
+                            <li>Testing with JUnit in Java 17</li>
+                            <li>MySQL/Postgres and MongoDB databases</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-period">03/2019 – 07/2021</div>
+                        <p class="cv-role"><strong>Werkstudent</strong> - Full-Stack Web Applications</p>
+                        <p class="cv-description">Development of time tracking software using C#, CSHTML, .NET Core Framework, MVVC</p>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-period">04/2018 – 10/2018</div>
+                        <h4>Senacor Technologies AG</h4>
+                        <p class="cv-role"><strong>Werkstudent</strong> - Java Frontend Developer</p>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-period">09/2014 – 08/2016</div>
+                        <h4>WGZ BANK AG</h4>
+                        <p class="cv-role"><strong>Werkstudent</strong> - Excel-VBA Development in Controlling</p>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-period">09/2011 – 08/2014</div>
+                        <h4>WGZ BANK AG</h4>
+                        <p class="cv-role"><strong>Ausbildung zum Informatikkaufmann</strong></p>
+                        <p class="cv-description">Degree: IT Business Manager, IHK</p>
+                        <p class="highlight-info">International Internship: 02/2014 at DZ PRIVATBANK S.A. in Luxembourg</p>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="cv-section">
+                    <h3 style="color: var(--button-orange); margin-bottom: 1.5rem; margin-top: 3rem;">Education</h3>
+                    
+                    <div class="cv-entry">
+                        <div class="cv-period">10/2018 – 09/2021</div>
+                        <h4>Master of Science - Wirtschaftsinformatik (M.Sc.)</h4>
+                        <p class="institution">Universität Duisburg-Essen</p>
+                        <p class="highlight-info">Study Abroad Semester: 01/2020 – 05/2020 at University of Jyväskylä, Finland</p>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-period">10/2014 – 03/2018</div>
+                        <h4>Bachelor of Science - Wirtschaftsinformatik (B.Sc.)</h4>
+                        <p class="institution">Universität zu Köln</p>
+                        <p class="highlight-info">Study Abroad Semester: 09/2016 – 12/2016 at Korea University in Seoul, South Korea</p>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-period">2011</div>
+                        <h4>Abitur</h4>
+                        <p class="institution">Steinbart-Gymnasium Duisburg</p>
+                        <p class="cv-description">Allgemeine Hochschulreife</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Divider -->
+    <div class="horizontal-divider"></div>
+
+    <!-- Projects -->
+    <section class="chapter" id="projects">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="icon-background">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                        <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                        <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                        <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h2>Key Projects</h2>
+            </div>
+            <div class="chapter-content">
+
+                <!-- Project 0: BPMN Process Creator -->
+                <div class="project-card">
+                    <h3>BPMN Process Creator (Internal Platform)</h3>
+                    <div class="project-meta">
+                        <span class="project-period">2024 – Ongoing</span>
+                        <span class="project-industry">Travel Industry - schauinsland-reisen</span>
+                    </div>
+                    <p class="project-description">
+                        Designed and built an internal web application enabling any department to document and visualize business processes using BPMN 2.0. 
+                        The tool has become highly visible and widely used across the organization, celebrated by IT leadership and cited in management discussions. 
+                        It reduces shadow IT, exposes inefficiencies, surfaces dependencies, and enables company-wide transition towards process-driven work.
+                    </p>
+                    <h4>Role & Responsibilities:</h4>
+                    <ul>
+                        <li>Full-stack development (SPA with BPMN.js integration)</li>
+                        <li>Product design and user experience optimization</li>
+                        <li>Company-wide BPMN evangelism and training support</li>
+                        <li>Supporting departments during process mapping sessions</li>
+                        <li>Creating IT-focused BPMN views for operational clarity</li>
+                        <li>Helping functional areas recognize redundancies and modernization needs</li>
+                    </ul>
+                    <div class="project-tech">
+                        <strong>Technologies:</strong>
+                        <span class="tech-tag">BPMN.js</span>
+                        <span class="tech-tag">JavaScript SPA</span>
+                        <span class="tech-tag">Process Modelling</span>
+                        <span class="tech-tag">Enterprise Architecture</span>
+                    </div>
+                </div>
+
+                <!-- Project 0.5: SSO/Keycloak -->
+                <div class="project-card">
+                    <h3>Company-Wide Single Sign-On (CBaaS)</h3>
+                    <div class="project-meta">
+                        <span class="project-period">2024 – Ongoing</span>
+                        <span class="project-industry">Travel Industry - schauinsland-reisen</span>
+                    </div>
+                    <p class="project-description">
+                        Architect and technical contact for the company-wide Single Sign-On initiative using Keycloak. 
+                        Strategically important project for digitalization with high visibility at management level. 
+                        Integration across multiple systems, AWS deployment, GDPR compliance, and coordination with external frontend agencies.
+                    </p>
+                    <h4>Role & Responsibilities:</h4>
+                    <ul>
+                        <li>Software architecture and technical leadership</li>
+                        <li>Keycloak configuration and AWS deployment</li>
+                        <li>Cross-system integration architecture</li>
+                        <li>GDPR compliance implementation</li>
+                        <li>Coordination with external agencies and internal teams</li>
+                        <li>Technical documentation and knowledge transfer</li>
+                    </ul>
+                    <div class="project-tech">
+                        <strong>Technologies:</strong>
+                        <span class="tech-tag">Keycloak</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">SSO/OAuth</span>
+                        <span class="tech-tag">GDPR</span>
+                        <span class="tech-tag">Enterprise Integration</span>
+                    </div>
+                </div>
+
+                <!-- Project 1: MobileApp Push-Service -->
+                <div class="project-card">
+                    <h3>MobileApp Push-Service (MVP)</h3>
+                    <div class="project-meta">
+                        <span class="project-period">03/2022 – 01/2023</span>
+                        <span class="project-industry">Public Administration</span>
+                    </div>
+                    <p class="project-description">
+                        Development of a middleware for push notification management across multiple federal mobile applications 
+                        (Corona-Warn-App, NINA, etc.). The system uses horizontal scaling with Kubernetes to handle varying loads, 
+                        implementing message queues for buffering and ArgoCD with Helm charts for cluster management.
+                    </p>
+                    <h4>Role & Responsibilities:</h4>
+                    <ul>
+                        <li>GitOps Developer with focus on Java and Kubernetes</li>
+                        <li>Android and iOS development for encryption</li>
+                        <li>Temporary Scrum Master role</li>
+                        <li>Evaluation of PoC source code</li>
+                        <li>Development of Java microservices with Postgres and MessageQueues</li>
+                        <li>Event & error handling architecture within security zones</li>
+                        <li>Jenkins CI/CD pipeline adjustments</li>
+                        <li>RSA encryption across Android, iOS, and Java</li>
+                    </ul>
+                    <div class="project-tech">
+                        <strong>Technologies:</strong>
+                        <span class="tech-tag">Java Spring Boot</span>
+                        <span class="tech-tag">JUnit5</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">NATS</span>
+                        <span class="tech-tag">RabbitMQ</span>
+                        <span class="tech-tag">Kubernetes v1.24</span>
+                        <span class="tech-tag">ArgoCD</span>
+                        <span class="tech-tag">Helm Charts</span>
+                        <span class="tech-tag">Jenkins CI/CD</span>
+                        <span class="tech-tag">Confluence</span>
+                        <span class="tech-tag">Jira</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Supplier and Producer Platform -->
+                <div class="project-card">
+                    <h3>Supplier and Producer Platform (LEP)</h3>
+                    <div class="project-meta">
+                        <span class="project-period">07/2021 – 01/2022</span>
+                        <span class="project-industry">Agricultural Cooperative</span>
+                    </div>
+                    <p class="project-description">
+                        Prototype platform for flower and plant producers to manage and market their products. 
+                        The LEP combines a negotiation platform, organizational system, and community networking features 
+                        to streamline multiple historically grown distribution channels.
+                    </p>
+                    <h4>Role & Responsibilities:</h4>
+                    <ul>
+                        <li>Node.js Backend Developer</li>
+                        <li>Angular Frontend Developer</li>
+                        <li>Agile Scrum team member</li>
+                        <li>Design and implementation of product management functions</li>
+                        <li>Data management and NPM package consistency</li>
+                        <li>CI/CD pipeline setup</li>
+                        <li>NGXS Store interactions</li>
+                        <li>User management implementation</li>
+                    </ul>
+                    <div class="project-tech">
+                        <strong>Technologies:</strong>
+                        <span class="tech-tag">Angular v12</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">NGXS Store</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">GitLab CI/CD</span>
+                        <span class="tech-tag">Traefik</span>
+                        <span class="tech-tag">Adobe XD</span>
+                        <span class="tech-tag">Jira</span>
+                        <span class="tech-tag">Miro</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: Skill Database -->
+                <div class="project-card">
+                    <h3>Skill Database (Internal)</h3>
+                    <div class="project-meta">
+                        <span class="project-period">03/2019 – 06/2021</span>
+                        <span class="project-industry">IT Consulting / Software House</span>
+                    </div>
+                    <p class="project-description">
+                        Internal project for managing employee skills and competencies to optimize project staffing. 
+                        Employees maintain their skills which are searchable and clearly presented. Built with JHipster 
+                        using Java Spring Boot, REST APIs, Angular frontend, and MongoDB database.
+                    </p>
+                    <h4>Role & Responsibilities:</h4>
+                    <ul>
+                        <li>Angular Frontend Developer</li>
+                        <li>Java Backend Developer</li>
+                        <li>Database Developer</li>
+                        <li>CI/CD Engineer</li>
+                        <li>Database conception</li>
+                        <li>CI/CD pipeline setup</li>
+                        <li>REST API development</li>
+                        <li>Testing with JUnit and Protractor</li>
+                    </ul>
+                    <div class="project-tech">
+                        <strong>Technologies:</strong>
+                        <span class="tech-tag">JHipster</span>
+                        <span class="tech-tag">Java Spring Boot</span>
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">GitLab CI/CD</span>
+                        <span class="tech-tag">JUnit</span>
+                        <span class="tech-tag">Protractor</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Divider -->
+    <div class="horizontal-divider"></div>
+
+    <!-- Certifications -->
+    <section class="chapter" id="certifications">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="icon-background">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h2>Certifications & Training</h2>
+            </div>
+            <div class="chapter-content">
+
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <h4>Cyber Security 101 Certificate</h4>
+                        <p class="cert-issuer">TryHackMe</p>
+                        <p class="cert-date">August 2025</p>
+                        <p class="cert-id">ID: THM-DKN1DRLLU2</p>
+                    </div>
+
+                    <div class="cert-card">
+                        <h4>Pre Security Certificate</h4>
+                        <p class="cert-issuer">TryHackMe</p>
+                        <p class="cert-date">August 2025</p>
+                        <p class="cert-id">ID: THM-DU1PJPM9U7</p>
+                    </div>
+
+                    <div class="cert-card">
+                        <h4>Pragmatisches Enterprise Architecture Management (EAM)</h4>
+                        <p class="cert-issuer">oose</p>
+                        <p class="cert-date">April 2025</p>
+                    </div>
+
+                    <div class="cert-card">
+                        <h4>iSAQB Certified Professional for Software Architecture - Foundation Level</h4>
+                        <p class="cert-issuer">Future Network Cert</p>
+                        <p class="cert-date">November 2024</p>
+                        <p class="cert-id">ID: 2402-CPSAFL-0723-EN</p>
+                    </div>
+
+                    <div class="cert-card">
+                        <h4>Software Architecture Camp Foundation</h4>
+                        <p class="cert-issuer">Entwickler.de Akademie</p>
+                        <p class="cert-date">November 2024</p>
+                    </div>
+
+                    <div class="cert-card">
+                        <h4>Professional Scrum Master (PSM I)</h4>
+                        <p class="cert-issuer">Scrum.org</p>
+                        <p class="cert-date">February 2022</p>
+                    </div>
+
+                    <div class="cert-card">
+                        <h4>PRINCE2 Foundation</h4>
+                        <p class="cert-issuer">AXELOS Global Best Practice</p>
+                        <p class="cert-date">May 2016</p>
+                        <p class="cert-id">ID: 03999301-01-FSE4</p>
+                    </div>
+
+                    <div class="cert-card">
+                        <h4>ITIL v3 Foundation</h4>
+                        <p class="cert-issuer">AXELOS Global Best Practice</p>
+                        <p class="cert-date">November 2015</p>
+                        <p class="cert-id">ID: 03931154-01-UG2B</p>
+                    </div>
+                </div>
+
+                <div class="conferences" style="margin-top: 3rem;">
+                    <h3 style="color: var(--button-orange); margin-bottom: 1.5rem;">Conference Participation</h3>
+                    <ul class="conf-list">
+                        <li><strong>DevOpsCon München</strong> - December 2025</li>
+                        <li><strong>JavaLand, Nürburgring</strong> - April 2025 (incl. Keycloak Workshop)</li>
+                        <li><strong>JAX, Mainz</strong> - April 2024</li>
+                        <li><strong>GPN22: Common Code - Different Roots</strong> - May 2024</li>
+                        <li><strong>GPN21: ch(ea|i)p alternatives</strong> - June 2023</li>
+                        <li><strong>Easterhegg20: Back to root</strong> - April 2023 (Presentation: RSA Encryption)</li>
+                        <li><strong>Chaos Communication Congress 34C3</strong> - December 2017</li>
+                        <li><strong>Chaos Communication Congress 32C3</strong> - December 2015</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Divider -->
+    <div class="horizontal-divider"></div>
+
+    <!-- Skills & Technologies -->
+    <section class="chapter" id="skills">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="icon-background">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h2>Skills & Technologies</h2>
+            </div>
+            <div class="chapter-content">
+
+                <div class="skills-section">
+                    <h3>Backend Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java 17</span>
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">Microservices</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Message Queuing (NATS, RabbitMQ)</span>
+                        <span class="skill-tag">Domain Driven Design (DDD)</span>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Angular (v7, v12)</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">NGXS Store</span>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <h3>DevOps & Cloud</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">ArgoCD</span>
+                        <span class="skill-tag">Helm Charts</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">GitLab CI/CD</span>
+                        <span class="skill-tag">GitOps</span>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <h3>Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Blockchain</span>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <h3>Testing & Quality</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">JUnit5</span>
+                        <span class="skill-tag">ArchUnit</span>
+                        <span class="skill-tag">Selenium</span>
+                        <span class="skill-tag">Protractor</span>
+                        <span class="skill-tag">SonarQube</span>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <h3>Security & Encryption</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">RSA Encryption</span>
+                        <span class="skill-tag">Spring Security</span>
+                        <span class="skill-tag">Ethical Hacking</span>
+                        <span class="skill-tag">Cyber Security</span>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <h3>Methodologies & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Scrum (PSM I)</span>
+                        <span class="skill-tag">PRINCE2</span>
+                        <span class="skill-tag">ITIL v3</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">Confluence</span>
+                        <span class="skill-tag">Maven</span>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <h3>Scripting & Other</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Excel VBA</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">Machine Learning (AI Systems)</span>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">German (Native)</span>
+                        <span class="skill-tag">English (Fluent)</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Divider -->
+    <div class="horizontal-divider"></div>
+
+    <!-- Page Architecture -->
+    <section class="chapter" id="architecture">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="icon-background">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                        <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                        <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                        <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                        <line x1="10" y1="6.5" x2="14" y2="6.5" stroke="currentColor" stroke-width="2"/>
+                        <line x1="10" y1="17.5" x2="14" y2="17.5" stroke="currentColor" stroke-width="2"/>
+                        <line x1="6.5" y1="10" x2="6.5" y2="14" stroke="currentColor" stroke-width="2"/>
+                        <line x1="17.5" y1="10" x2="17.5" y2="14" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h2>Page Architecture</h2>
+            </div>
+            <div class="chapter-content">
+                
+                <p style="margin-bottom: 2rem; line-height: 1.8; color: var(--h2-light);">
+                    This portfolio website is built with a modern architecture combining static hosting and serverless edge computing. 
+                    The following diagrams illustrate the system design, data flows, and component interactions that power the tracking 
+                    and analytics features.
+                </p>
+
+                <!-- Context Diagram -->
+                <div class="architecture-diagram">
+                    <h3 style="color: var(--h1-white); margin-bottom: 1rem;">System Context Diagram</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--h2-light);">
+                        High-level overview showing system boundaries, external actors, and component relationships. 
+                        This follows the C4 Model architecture documentation standard.
+                    </p>
+                    <div class="diagram-container">
+                        <img src="resources/mermaid/tracking-context-diagram.svg" alt="System Context Diagram" style="width: 100%; max-width: 1200px; height: auto; border: 1px solid var(--horizontal-divider); border-radius: 8px; background: white; padding: 1rem;">
+                    </div>
+                    <div class="diagram-legend" style="margin-top: 1rem; padding: 1rem; background: rgba(30, 50, 120, 0.2); border-radius: 8px;">
+                        <p style="font-size: 0.9rem; color: var(--h2-light); margin: 0;">
+                            <strong style="color: var(--h1-white);">Components:</strong> 
+                            Website Visitor (Browser) → GitHub Pages (Static Hosting) → 
+                            Cloudflare Worker (Backend) → Cloudflare KV (Storage) → 
+                            Administrator (Dashboard)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Sequence Diagram -->
+                <div class="architecture-diagram" style="margin-top: 3rem;">
+                    <h3 style="color: var(--h1-white); margin-bottom: 1rem;">Communication Sequence Flow</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--h2-light);">
+                        Detailed step-by-step interaction flow showing how tracking pixels are sent, 
+                        session management works, and data is persisted across the system.
+                    </p>
+                    <div class="diagram-container">
+                        <img src="resources/mermaid/mermaid–sequenceflow.svg" alt="Sequence Diagram" style="width: 100%; max-width: 1200px; height: auto; border: 1px solid var(--horizontal-divider); border-radius: 8px; background: white; padding: 1rem;">
+                    </div>
+                    <div class="diagram-legend" style="margin-top: 1rem; padding: 1rem; background: rgba(30, 50, 120, 0.2); border-radius: 8px;">
+                        <p style="font-size: 0.9rem; color: var(--h2-light); margin: 0;">
+                            <strong style="color: var(--h1-white);">Key Events:</strong> 
+                            Login → UUID Generation → Page Load Tracking → 
+                            Navigation Click Tracking → Dashboard Analytics
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Technical Highlights -->
+                <div style="margin-top: 3rem; padding: 1.5rem; background: rgba(30, 50, 120, 0.2); border-left: 4px solid var(--button-orange); border-radius: 8px;">
+                    <h4 style="color: var(--h1-white); margin-bottom: 1rem;">Architecture Highlights</h4>
+                    <ul style="color: var(--h2-light); line-height: 1.8;">
+                        <li><strong>Separation of Concerns:</strong> Static frontend (GitHub Pages) + Serverless backend (Cloudflare Workers)</li>
+                        <li><strong>Edge Computing:</strong> Global low-latency responses via Cloudflare's edge network</li>
+                        <li><strong>Privacy-First Design:</strong> Session-based UUID v4 tracking, no persistent cookies</li>
+                        <li><strong>Scalability:</strong> Serverless architecture with automatic scaling</li>
+                        <li><strong>Observability:</strong> Real-time dashboard with search and filtering capabilities</li>
+                        <li><strong>Standards Compliance:</strong> Architecture documented using C4 Model and UML standards</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Divider -->
+    <div class="horizontal-divider"></div>
+
+    <!-- Call to Action -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <div class="cta-buttons">
+                <button class="cta-button large" id="contactButton">Contact Me</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-container">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-content">
+                <h2 style="color: var(--h1-white); margin-bottom: 1rem;">Get in Touch</h2>
+                
+                <div id="questionSection">
+                    <p style="color: var(--h2-light); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Safety question: How many colored boxes are connected in the System Context Diagram?
+                    </p>
+                    <p style="color: var(--h2-light); font-size: 0.9rem; margin-bottom: 1rem; font-style: italic;">
+                        Hint: Enter as text! <br> (1 → "one", 10 → "ten")
+                    </p>
+                    
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="safetyAnswer" 
+                            placeholder="Enter your answer..."
+                            autocomplete="off"
+                            style="width: 100%; padding: 1rem; background: rgba(11, 19, 46, 0.8); border: 2px solid var(--horizontal-divider); border-radius: 8px; color: var(--h1-white); font-size: 1rem;"
+                        >
+                    </div>
+                    
+                    <div id="errorMessage" style="color: #ff4444; margin-top: 0.5rem; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s;">
+                        Incorrect answer. Please try again.
+                    </div>
+                    
+                    <button class="cta-button" id="submitAnswer" style="margin-top: 1.5rem; width: 100%;">
+                        Submit Answer
+                    </button>
+                </div>
+                
+                <div id="contactInfo" style="display: none;">
+                    <div style="text-align: center; padding: 2rem;">
+                        <i class="fas fa-check-circle" style="color: #4CAF50; font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3 style="color: var(--h1-white); margin-bottom: 1.5rem;">Contact Information</h3>
+                        
+                        <div style="background: rgba(30, 50, 120, 0.3); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--button-orange); margin-bottom: 1rem;">
+                            <p style="color: var(--h2-light); margin-bottom: 0.5rem;">
+                                <i class="fas fa-phone" style="color: var(--button-orange); margin-right: 0.5rem;"></i>
+                                Phone
+                            </p>
+                            <a href="tel:+4915788867071" style="color: var(--h1-white); font-size: 1.2rem; font-weight: bold; text-decoration: none;">
+                                +49 157 888 67 07 1
+                            </a>
+                        </div>
+                        
+                        <div style="background: rgba(30, 50, 120, 0.3); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--button-orange);">
+                            <p style="color: var(--h2-light); margin-bottom: 0.5rem;">
+                                <i class="fas fa-envelope" style="color: var(--button-orange); margin-right: 0.5rem;"></i>
+                                Email
+                            </p>
+                            <a href="email" style="color: var(--h1-white); font-size: 1.2rem; font-weight: bold; text-decoration: none;">
+                                d.braun1991@googlemail.com
+                            </a>
+                        </div>
+                        
+                        <p style="color: var(--h2-light); margin-top: 1.5rem; font-size: 0.9rem;">
+                            Thank you for taking the time to explore the application!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Check authentication
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.href = 'index.html';
+        }
+
+        // Send page load tracking pixel
+        (function() {
+            const sessionId = sessionStorage.getItem('session_uuid');
+            if (sessionId) {
+                const pixelUrl = `https://backendcontent.d-braun1991.workers.dev/pixel?session=${sessionId}&action=page_load`;     const img = new Image();
+                img.src = pixelUrl;
+            }
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
