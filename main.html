@@ -496,6 +496,118 @@
                 right: -280px;
             }
         }
+
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: rgba(30, 50, 120, 0.5);
+            border: 2px solid var(--horizontal-divider);
+            color: var(--h2-light);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn:hover {
+            background: rgba(30, 50, 120, 0.8);
+            border-color: var(--button-orange);
+            color: var(--h1-white);
+        }
+
+        .lang-btn.active {
+            background: var(--button-orange);
+            border-color: var(--button-orange);
+            color: var(--h1-white);
+        }
+
+        @media (max-width: 768px) {
+            .language-switcher {
+                gap: 0.25rem;
+            }
+
+            .lang-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Translation Info Icon */
+        .translation-info {
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: var(--h2-light);
+            cursor: help;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .translation-info:hover {
+            color: var(--button-orange);
+        }
+
+        .translation-info-text {
+            position: absolute;
+            bottom: -60px;
+            right: 0;
+            background: rgba(11, 19, 46, 0.95);
+            border: 2px solid var(--button-orange);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.85rem;
+            color: var(--h2-light);
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .translation-info:hover .translation-info-text {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .translation-info-text::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--button-orange);
+        }
+
+        @media (max-width: 768px) {
+            .translation-info-text {
+                white-space: normal;
+                width: 200px;
+                right: -50px;
+            }
+
+            .translation-info {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .translation-info-text {
+                width: 180px;
+                font-size: 0.8rem;
+                padding: 0.6rem 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -503,9 +615,20 @@
     <header class="main-header">
         <div class="container">
             <div class="logo">Dom<span class="highlight">Docs</span></div>
-            <button class="burger-menu" id="burgerMenu" aria-label="Open menu">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
+                    <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
+                    <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
+                </div>
+                <div class="translation-info" title="">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="translation-info-text" data-i18n="common.translationInfo">For accuracy reasons not all parts of the page are translated.</span>
+                </div>
+                <button class="burger-menu" id="burgerMenu" aria-label="Open menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -515,14 +638,14 @@
             <i class="fas fa-times"></i>
         </button>
         <nav class="sidebar-nav">
-            <a href="#overview" class="sidebar-link">Overview</a>
-            <a href="#motivation" class="sidebar-link">Motivation</a>
-            <a href="#cv" class="sidebar-link">Curriculum Vitae</a>
-            <a href="#projects" class="sidebar-link">Projects</a>
-            <a href="#certifications" class="sidebar-link">Certifications</a>
-            <a href="#skills" class="sidebar-link">Skills</a>
-            <a href="#architecture" class="sidebar-link">Page Architecture</a>
-            <a href="#contact" class="sidebar-link">Contact</a>
+            <a href="#overview" class="sidebar-link" data-i18n="nav.overview">Overview</a>
+            <a href="#motivation" class="sidebar-link" data-i18n="nav.motivation">Motivation</a>
+            <a href="#cv" class="sidebar-link" data-i18n="nav.cv">Curriculum Vitae</a>
+            <a href="#projects" class="sidebar-link" data-i18n="nav.projects">Projects</a>
+            <a href="#certifications" class="sidebar-link" data-i18n="nav.certifications">Certifications</a>
+            <a href="#skills" class="sidebar-link" data-i18n="nav.skills">Skills</a>
+            <a href="#architecture" class="sidebar-link" data-i18n="nav.architecture">Page Architecture</a>
+            <a href="#contact" class="sidebar-link" data-i18n="nav.contact">Contact</a>
         </nav>
     </div>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -537,12 +660,12 @@
                     </div>
                 </div>
                 <div class="intro-text">
-                    <h1 style="font-size: 2rem;">Dominik Braun</h1>
-                    <p class="subtitle">Java Developer and IT Architect</p>
-                    <p class="location">Duisburg</p>
+                    <h1 style="font-size: 2rem;" data-i18n="hero.name">Dominik Braun</h1>
+                    <p class="subtitle" data-i18n="hero.title">Java Developer and IT Architect</p>
+                    <p class="location" data-i18n="hero.location">Duisburg</p>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 2rem; font-size: 1.1rem; color: #B7BECD;">
+            <div style="text-align: center; margin-top: 2rem; font-size: 1.1rem; color: #B7BECD;" data-i18n="hero.subtitle">
                 Application for the advertised position as an IT architect
             </div>
         </div>
@@ -554,116 +677,116 @@
     <!-- Overview Table Section -->
     <section class="overview" id="overview">
         <div class="container">
-            <h2>Qualifications Overview</h2>
+            <h2 data-i18n="overview.title">Qualifications Overview</h2>
             
             <!-- IT Architect Section -->
-            <h3 class="qualification-subtitle">IT Architect</h3>
+            <h3 class="qualification-subtitle" data-i18n="overview.itArchitect">IT Architect</h3>
             <div class="table-wrapper">
                 <table class="requirements-table">
                     <thead>
                         <tr>
-                            <th>Requested</th>
-                            <th>Fulfilled</th>
-                            <th>Chapter</th>
+                            <th data-i18n="overview.tableHeaders.requested">Requested</th>
+                            <th data-i18n="overview.tableHeaders.fulfilled">Fulfilled</th>
+                            <th data-i18n="overview.tableHeaders.chapter">Chapter</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>A completed degree in a STEM discipline</td>
+                            <td data-i18n="overview.requirements.stemDegree">A completed degree in a STEM discipline</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#cv">M.Sc. Information Systems</a></td>
+                            <td><a href="#cv" data-i18n="overview.links.mastersDegree">M.Sc. Information Systems</a></td>
                         </tr>
                         <tr>
-                            <td>Experience in delivering IT projects and in creating and documenting enterprise and software architectures</td>
+                            <td data-i18n="overview.requirements.projectExperience">Experience in delivering IT projects and in creating and documenting enterprise and software architectures</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#projects">IT Projects</a></td>
+                            <td><a href="#projects" data-i18n="overview.links.itProjects">IT Projects</a></td>
                         </tr>
                         <tr>
-                            <td>Solid expertise in enterprise/software architecture mgmt.</td>
+                            <td data-i18n="overview.requirements.architectureExpertise">Solid expertise in enterprise/software architecture mgmt.</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#certifications">iSAQB CPSA-F</a></td>
+                            <td><a href="#certifications" data-i18n="overview.links.cpsa">iSAQB CPSA-F</a></td>
                         </tr>
                         <tr>
-                            <td>Experience with BPMN, low-code platforms, and architecture frameworks (e.g., TOGAF)</td>
+                            <td data-i18n="overview.requirements.bpmnExperience">Experience with BPMN, low-code platforms, and architecture frameworks (e.g., TOGAF)</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#skills">Architecture Frameworks</a></td>
+                            <td><a href="#skills" data-i18n="overview.links.frameworks">Architecture Frameworks</a></td>
                         </tr>
                         <tr>
-                            <td>Strong analytical skills; modelling experience (UML, Archimate, BPMN)</td>
+                            <td data-i18n="overview.requirements.analyticalSkills">Strong analytical skills; modelling experience (UML, Archimate, BPMN)</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#architecture">Modelling Skills</a></td>
+                            <td><a href="#architecture" data-i18n="overview.links.modelling">Modelling Skills</a></td>
                         </tr>
                         <tr>
-                            <td>Ability to explain complex technical topics simply, in both German and English</td>
+                            <td data-i18n="overview.requirements.communication">Ability to explain complex technical topics simply, in both German and English</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#cv">Bilingual</a></td>
+                            <td><a href="#cv" data-i18n="overview.links.bilingual">Bilingual</a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <!-- IT-Security Architect Section -->
-            <h3 class="qualification-subtitle">IT-Security Architect</h3>
+            <h3 class="qualification-subtitle" data-i18n="overview.securityArchitect">IT-Security Architect</h3>
             <div class="table-wrapper">
                 <table class="requirements-table">
                     <thead>
                         <tr>
-                            <th>Requested</th>
-                            <th>Fulfilled</th>
-                            <th>Chapter</th>
+                            <th data-i18n="overview.tableHeaders.requested">Requested</th>
+                            <th data-i18n="overview.tableHeaders.fulfilled">Fulfilled</th>
+                            <th data-i18n="overview.tableHeaders.chapter">Chapter</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Familiarity with modern encryption technologies</td>
+                            <td data-i18n="overview.requirements.encryptionTech">Familiarity with modern encryption technologies</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#projects">RSA Encryption</a></td>
+                            <td><a href="#projects" data-i18n="overview.links.rsaEncryption">RSA Encryption</a></td>
                         </tr>
                         <tr>
-                            <td>Experience with Splunk; understanding of current attack techniques</td>
+                            <td data-i18n="overview.requirements.splunkAttacks">Experience with Splunk; understanding of current attack techniques</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#certifications">TryHackMe</a></td>
+                            <td><a href="#certifications" data-i18n="overview.links.tryhackme">TryHackMe</a></td>
                         </tr>
                         <tr>
-                            <td>Ethical hacking</td>
+                            <td data-i18n="overview.requirements.ethicalHacking">Ethical hacking</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#certifications">Cyber Security 101</a></td>
+                            <td><a href="#certifications" data-i18n="overview.links.cyberSecurity">Cyber Security 101</a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <!-- Senior DevOps Engineer Section -->
-            <h3 class="qualification-subtitle">Senior DevOps Engineer</h3>
+            <h3 class="qualification-subtitle" data-i18n="overview.devopsEngineer">Senior DevOps Engineer</h3>
             <div class="table-wrapper">
                 <table class="requirements-table">
                     <thead>
                         <tr>
-                            <th>Requested</th>
-                            <th>Fulfilled</th>
-                            <th>Chapter</th>
+                            <th data-i18n="overview.tableHeaders.requested">Requested</th>
+                            <th data-i18n="overview.tableHeaders.fulfilled">Fulfilled</th>
+                            <th data-i18n="overview.tableHeaders.chapter">Chapter</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Professional experience in DevOps, Site Reliability Engineering, or similar roles</td>
+                            <td data-i18n="overview.requirements.devopsExperience">Professional experience in DevOps, Site Reliability Engineering, or similar roles</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#cv">2+ Years Experience</a></td>
+                            <td><a href="#cv" data-i18n="overview.links.yearsExperience">2+ Years Experience</a></td>
                         </tr>
                         <tr>
-                            <td>Proficiency in at least one scripting language (PowerShell, Bash, Python)</td>
+                            <td data-i18n="overview.requirements.scriptingLanguages">Proficiency in at least one scripting language (PowerShell, Bash, Python)</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#skills">Python, Node.js</a></td>
+                            <td><a href="#skills" data-i18n="overview.links.pythonNode">Python, Node.js</a></td>
                         </tr>
                         <tr>
-                            <td>Hands-on experience with containerization (Docker) and orchestration (Kubernetes)</td>
+                            <td data-i18n="overview.requirements.containerization">Hands-on experience with containerization (Docker) and orchestration (Kubernetes)</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#projects">K8s & ArgoCD</a></td>
+                            <td><a href="#projects" data-i18n="overview.links.k8sArgo">K8s & ArgoCD</a></td>
                         </tr>
                         <tr>
-                            <td>Confident use of version control systems (e.g., Git) and practical experience with CI/CD platforms</td>
+                            <td data-i18n="overview.requirements.versionControl">Confident use of version control systems (e.g., Git) and practical experience with CI/CD platforms</td>
                             <td class="fulfilled"><i class="fas fa-check-circle"></i></td>
-                            <td><a href="#skills">GitLab & Jenkins</a></td>
+                            <td><a href="#skills" data-i18n="overview.links.gitlabJenkins">GitLab & Jenkins</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -683,12 +806,12 @@
                         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
                     </svg>
                 </div>
-                <h2>Why softproject as IT Architect</h2>
+                <h2 data-i18n="motivation.title">Motivation</h2>
             </div>
             <div class="chapter-content">
                 
                 <div style="background: rgba(30, 50, 120, 0.2); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--button-orange); margin-bottom: 2rem;">
-                    <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem;">
+                    <p data-i18n="motivation.intro" style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem;">
                         The IT Architect position at softproject resonates deeply with my professional journey and aspirations. 
                         Having evolved from backend development into a cross-functional architecture role, I've discovered my passion 
                         lies in the intersection of technology strategy, system design, and organizational enablement—precisely what 
@@ -696,7 +819,7 @@
                     </p>
                 </div>
 
-                <h3 style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Architecture as Organizational Catalyst</h3>
+                <h3 data-i18n="motivation.heading1" style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Architecture as Organizational Catalyst</h3>
                 <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
                     At schauinsland-reisen, I've experienced firsthand how architecture transcends pure technical design. My work on the 
                     BPMN Process Creator demonstrates this philosophy: by providing departments with a tool for transparent process documentation, 
@@ -705,7 +828,7 @@
                     DevOps, Security, and Infrastructure teams.
                 </p>
 
-                <h3 style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Proven Track Record in Modern Architecture Patterns</h3>
+                <h3 data-i18n="motivation.heading2" style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Proven Track Record in Modern Architecture Patterns</h3>
                 <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
                     Your focus on microservices, domain-driven design, and event-driven architectures mirrors my practical experience. 
                     The MobileApp Push-Service project showcased my ability to work in a team on horizontally scalable systems using Kubernetes, 
@@ -716,7 +839,7 @@
                     with detailed system diagrams following C4 Model and UML standards.
                 </p>
 
-                <h3 style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Technical Debt & Modernization Expertise</h3>
+                <h3 data-i18n="motivation.heading3" style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Technical Debt & Modernization Expertise</h3>
                 <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
                     My creation of the Readme Report tool—which improved documentation coverage from 10% to 80% across 310+ repositories—demonstrates 
                     my ability to assess technical quality, identify systemic issues, and implement pragmatic modernization strategies. 
@@ -724,7 +847,7 @@
                     "assessing technical quality of existing systems and developing modernization strategies."
                 </p>
 
-                <h3 style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Documentation & Communication Philosophy</h3>
+                <h3 data-i18n="motivation.heading4" style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Documentation & Communication Philosophy</h3>
                 <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
                     I firmly believe that "good code is understandable by humans—and thus by AI" leading into a 10x-preogress future.
                     This principle has guided my work in establishing documentation standards, architecture decision records, and transparent decision-making processes. 
@@ -732,7 +855,7 @@
                     ensure I can fulfill your need to "define technical standards and document decisions in a transparent and comprehensible way."
                 </p>
 
-                <h3 style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Platform Engineering & Cloud Native Mindset</h3>
+                <h3 data-i18n="motivation.heading5" style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Platform Engineering & Cloud Native Mindset</h3>
                 <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
                     My involvement in the Kubernetes rollout initiative, attendance at DevOpsCon (Internal Developer Platform track), and basic
                     hands-on experience with ArgoCD, Helm charts, and profound knowledge with GitLab CI/CD pipelines demonstrate my readiness to "support the 
@@ -740,7 +863,7 @@
                     infrastructure—it's about enabling teams to deliver value faster and more reliably.
                 </p>
 
-                <h3 style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Why This Matters to Me</h3>
+                <h3 data-i18n="motivation.heading6" style="color: var(--button-orange); margin: 2rem 0 1rem 0;">Why This Matters to Me</h3>
                 <p style="color: var(--h2-light); line-height: 1.8; margin-bottom: 1.5rem;">
                     At schauinsland-reisen, I've operated as what could be called a "silent leader"—driving change without formal authority 
                     through technical excellence and cross-team collaboration. While this has been rewarding, I'm seeking an environment 
@@ -800,13 +923,13 @@
                         <path d="M16 7H8M16 11H8M13 15H8M19 3H5C3.895 3 3 3.895 3 5V19C3 20.105 3.895 21 5 21H19C20.105 21 21 20.105 21 19V5C21 3.895 20.105 3 19 3Z" stroke="currentColor" stroke-width="2"/>
                     </svg>
                 </div>
-                <h2>Curriculum Vitae</h2>
+                <h2 data-i18n="cv.title">Curriculum Vitae</h2>
             </div>
             <div class="chapter-content">
                 
                 <!-- Work Experience -->
                 <div class="cv-section">
-                    <h3 style="color: var(--button-orange); margin-bottom: 1.5rem;">Professional Experience</h3>
+                    <h3 style="color: var(--button-orange); margin-bottom: 1.5rem;" data-i18n="cv.professionalExperience">Professional Experience</h3>
                     
                     <div class="cv-entry">
                         <div class="cv-period">Since 11/2023</div>
@@ -868,7 +991,7 @@
 
                 <!-- Education -->
                 <div class="cv-section">
-                    <h3 style="color: var(--button-orange); margin-bottom: 1.5rem; margin-top: 3rem;">Education</h3>
+                    <h3 style="color: var(--button-orange); margin-bottom: 1.5rem; margin-top: 3rem;" data-i18n="cv.education">Education</h3>
                     
                     <div class="cv-entry">
                         <div class="cv-period">10/2018 – 09/2021</div>
@@ -911,7 +1034,7 @@
                         <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
                     </svg>
                 </div>
-                <h2>Key Projects</h2>
+                <h2 data-i18n="nav.projects">Key Projects</h2>
             </div>
             <div class="chapter-content">
 
@@ -1106,7 +1229,7 @@
                         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
                     </svg>
                 </div>
-                <h2>Certifications & Training</h2>
+                <h2 data-i18n="nav.certifications">Certifications & Training</h2>
             </div>
             <div class="chapter-content">
 
@@ -1195,7 +1318,7 @@
                         <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2"/>
                     </svg>
                 </div>
-                <h2>Skills & Technologies</h2>
+                <h2 data-i18n="nav.skills">Skills & Technologies</h2>
             </div>
             <div class="chapter-content">
 
@@ -1322,7 +1445,7 @@
                         <line x1="17.5" y1="10" x2="17.5" y2="14" stroke="currentColor" stroke-width="2"/>
                     </svg>
                 </div>
-                <h2>Page Architecture</h2>
+                <h2 data-i18n="nav.architecture">Page Architecture</h2>
             </div>
             <div class="chapter-content">
                 
@@ -1394,9 +1517,9 @@
     <!-- Call to Action -->
     <section class="cta-section" id="contact">
         <div class="container">
-            <h2>Let's Connect</h2>
+            <h2 data-i18n="contact.title">Let's Connect</h2>
             <div class="cta-buttons">
-                <button class="cta-button large" id="contactButton">Contact Me</button>
+                <button class="cta-button large" id="contactButton" data-i18n="contact.buttonText">Contact Me</button>
             </div>
         </div>
     </section>
@@ -1414,7 +1537,7 @@
             </button>
             
             <div class="modal-content">
-                <h2 style="color: var(--h1-white); margin-bottom: 1rem;">Get in Touch</h2>
+                <h2 style="color: var(--h1-white); margin-bottom: 1rem;" data-i18n="contact.modalTitle">Get in Touch</h2>
                 
                 <div id="questionSection">
                     <p style="color: var(--h2-light); margin-bottom: 1.5rem; line-height: 1.6;">
@@ -1428,7 +1551,7 @@
                         <input 
                             type="text" 
                             id="safetyAnswer" 
-                            placeholder="Enter your answer..."
+                            data-i18n-placeholder="contact.placeholder" placeholder="Enter your answer..."
                             autocomplete="off"
                             style="width: 100%; padding: 1rem; background: rgba(11, 19, 46, 0.8); border: 2px solid var(--horizontal-divider); border-radius: 8px; color: var(--h1-white); font-size: 1rem;"
                         >
@@ -1438,7 +1561,7 @@
                         Incorrect answer. Please try again.
                     </div>
                     
-                    <button class="cta-button" id="submitAnswer" style="margin-top: 1.5rem; width: 100%;">
+                    <button class="cta-button" id="submitAnswer" data-i18n="contact.submitButton" style="margin-top: 1.5rem; width: 100%;">
                         Submit Answer
                     </button>
                 </div>
@@ -1446,7 +1569,7 @@
                 <div id="contactInfo" style="display: none;">
                     <div style="text-align: center; padding: 2rem;">
                         <i class="fas fa-check-circle" style="color: #4CAF50; font-size: 3rem; margin-bottom: 1rem;"></i>
-                        <h3 style="color: var(--h1-white); margin-bottom: 1.5rem;">Contact Information</h3>
+                        <h3 style="color: var(--h1-white); margin-bottom: 1.5rem;" data-i18n="contact.contactInfoTitle">Contact Information</h3>
                         
                         <div style="background: rgba(30, 50, 120, 0.3); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--button-orange); margin-bottom: 1rem;">
                             <p style="color: var(--h2-light); margin-bottom: 0.5rem;">
@@ -1461,14 +1584,14 @@
                         <div style="background: rgba(30, 50, 120, 0.3); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--button-orange);">
                             <p style="color: var(--h2-light); margin-bottom: 0.5rem;">
                                 <i class="fas fa-envelope" style="color: var(--button-orange); margin-right: 0.5rem;"></i>
-                                Email
+                                <span data-i18n="contact.email">Email</span>
                             </p>
-                            <a href="email" style="color: var(--h1-white); font-size: 1.2rem; font-weight: bold; text-decoration: none;">
+                            <a href="mailto:d.braun1991@googlemail.com" style="color: var(--h1-white); font-size: 1.2rem; font-weight: bold; text-decoration: none;">
                                 d.braun1991@googlemail.com
                             </a>
                         </div>
                         
-                        <p style="color: var(--h2-light); margin-top: 1.5rem; font-size: 0.9rem;">
+                        <p style="color: var(--h2-light); margin-top: 1.5rem; font-size: 0.9rem;" data-i18n="contact.thankYou">
                             Thank you for taking the time to explore the application!
                         </p>
                     </div>
@@ -1477,7 +1600,7 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Check authentication
         if (sessionStorage.getItem('authenticated') !== 'true') {
             window.location.href = 'index.html';
@@ -1487,11 +1610,16 @@
         (function() {
             const sessionId = sessionStorage.getItem('session_uuid');
             if (sessionId) {
-                const pixelUrl = `https://backendcontent.d-braun1991.workers.dev/pixel?session=${sessionId}&action=page_load`;     const img = new Image();
+                const pixelUrl = `https://backendcontent.d-braun1991.workers.dev/pixel?session=${sessionId}&action=page_load`;
+                const img = new Image(1, 1);
                 img.src = pixelUrl;
+                img.style.display = 'none';
+                document.body.appendChild(img);
             }
         })();
     </script>
+    <script src="translation.js"></script>
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

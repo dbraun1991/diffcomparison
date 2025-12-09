@@ -30,6 +30,40 @@
             padding: 2rem;
         }
 
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            background: rgba(30, 50, 120, 0.5);
+            border: 2px solid var(--horizontal-divider);
+            color: var(--h2-light);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn:hover {
+            background: rgba(30, 50, 120, 0.8);
+            border-color: var(--button-orange);
+            color: var(--h1-white);
+        }
+
+        .lang-btn.active {
+            background: var(--button-orange);
+            border-color: var(--button-orange);
+            color: var(--h1-white);
+        }
+
         .password-container {
             background-color: rgba(30, 50, 120, 0.3);
             backdrop-filter: blur(10px);
@@ -125,6 +159,17 @@
         }
 
         @media (max-width: 480px) {
+            .language-switcher {
+                top: 1rem;
+                right: 1rem;
+                gap: 0.25rem;
+            }
+
+            .lang-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
             .password-container {
                 padding: 2rem;
             }
@@ -136,12 +181,19 @@
     </style>
 </head>
 <body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
+        <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
+        <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
+    </div>
+
     <div class="password-container">
         <div class="logo">Dom<span class="highlight">Docs</span></div>
-        <h2>Access Required</h2>
+        <h2 data-i18n="login.title">Access Required</h2>
         <p>
-            Please enter the password <br>
-            or inspect the page as code via 
+            <span data-i18n="login.instruction">Please enter the password</span> <br>
+            <span data-i18n="login.alternativ">or inspect the page as code via</span>
             <a href="https://github.com/dbraun1991/diffcomparison" target="_blank" rel="noopener noreferrer">
                 github
             </a>.
@@ -152,15 +204,16 @@
                 <input 
                     type="password" 
                     id="passwordInput" 
+                    data-i18n-placeholder="login.passwordPlaceholder"
                     placeholder="Enter password"
                     autocomplete="off"
                     required
                 >
             </div>
-            <button type="submit" class="submit-button">Enter</button>
+            <button type="submit" class="submit-button" data-i18n="login.enterButton">Enter</button>
         </form>
         
-        <div id="errorMessage" class="error-message">Incorrect password. Please try again.</div>
+        <div id="errorMessage" class="error-message" data-i18n="login.errorMessage">Incorrect password. Please try again.</div>
     </div>
 
     <script>
@@ -215,5 +268,7 @@
         });
     </script>
     <script src="password-auth.js"></script>
+    <script src="translation.js"></script>
+    <script src="i18n.js"></script>
 </body>
 </html>
